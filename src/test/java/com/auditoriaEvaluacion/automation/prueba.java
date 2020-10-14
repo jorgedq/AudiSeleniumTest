@@ -1,5 +1,9 @@
 package com.auditoriaEvaluacion.automation;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
@@ -16,10 +20,19 @@ public class prueba {
 	
 	private WebDriver driver;
 	
+	@BeforeMethod
 	@BeforeTest
 	public void setUp() {
 		
-		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+		if(System.getProperty("os.name").equals("Linux")) {
+			
+			System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/linux/chromedriver");
+			
+		}else {
+			
+			System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
+			
+		}
 		
 		driver = new ChromeDriver();
 	
@@ -35,17 +48,18 @@ public class prueba {
 		
 		searchbox.clear();
 		
-		searchbox.sendKeys("quality-stream Introducci髇 a la Automatizaci髇 de Pruebas de Software");
+		searchbox.sendKeys("quality-stream Introducci贸n a la Automatizaci贸n de Pruebas de Software");
 		
 		searchbox.submit();
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		System.out.println(driver.getTitle());
-		assertEquals("quality-stream Introducci髇 a la Automatizaci髇 de Pruebas de Software - Buscar con Google",driver.getTitle());
+		AssertJUnit.assertEquals("quality-stream Introducci贸n a la Automatizaci贸n de Pruebas de Software - Buscar con Google",driver.getTitle());
 		
 	}
 	
+	@AfterMethod
 	@AfterTest
 	public void tearDown() {
 		
