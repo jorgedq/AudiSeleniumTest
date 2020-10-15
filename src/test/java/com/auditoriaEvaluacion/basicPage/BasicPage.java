@@ -20,6 +20,16 @@ public class BasicPage {
 	//return driver connection
 	public WebDriver getChromeDriverConnection() {
 		
+		if(System.getProperty("os.name").equals("Linux")) {
+			
+			System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/linux/chromedriver");
+			
+		}else {
+			
+			System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver/Windows/chromedriver.exe");
+			
+		}
+		
 		driver = new ChromeDriver();
 		
 		return driver;
@@ -87,6 +97,19 @@ public class BasicPage {
 		try {
 			
 			return driver.findElement(location).isDisplayed();
+		
+		}catch(org.openqa.selenium.NoSuchElementException error) {
+			
+			return false;
+			
+		}
+		
+	}
+	public boolean isDisplayed(WebElement element) {
+		
+		try {
+			
+			return element.isDisplayed();
 		
 		}catch(org.openqa.selenium.NoSuchElementException error) {
 			
