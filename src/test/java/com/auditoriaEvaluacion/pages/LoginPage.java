@@ -6,23 +6,40 @@ import org.openqa.selenium.WebDriver;
 import com.auditoriaEvaluacion.Interface.LoginMethods;
 import com.auditoriaEvaluacion.basicPage.BasicPage;
 
-public class IndexPage extends BasicPage implements LoginMethods{
-	//constructor
-	public IndexPage(WebDriver driver) {
-		
+public class LoginPage extends BasicPage implements LoginMethods{
+
+	public LoginPage(WebDriver driver) {
+
 		super(driver);
-	
+
 	}
+	
+	public void fillData(String email, String password) {
+		
+		type(email, this.email);
+		
+		type(password, this.password);
+		
+	}
+	
+	public void submit() {
+		
+		click(submit);
+		
+	}
+	
 	public void changeDarkMode() {
 		
 		click(switchButton);
-
+		
 	}
+
 	public void clickRegister() {
 		
 		click(registerLink);
 		
 	}
+
 	public void clickLogin() {
 		
 		click(loginLink);
@@ -31,8 +48,8 @@ public class IndexPage extends BasicPage implements LoginMethods{
 	
 	public boolean isOpen() {
 		
-		return isDisplayed(imgIndex);
-	
+		return isDisplayed(title);
+		
 	}
 	//elemets of the page
 	By loginLink = By.linkText("Iniciar Sesión");
@@ -41,6 +58,15 @@ public class IndexPage extends BasicPage implements LoginMethods{
 	
 	By switchButton = By.className("switch__slider");
 	
-	By imgIndex = By.xpath(".//img[@src='/image/notitas.jpg']");
+	By alert = By.tagName("strong");
 	
+	By title = By.xpath(".//h1");
+	
+	By email = By.name("email");
+	
+	By password = By.name("password");
+	
+	By submit = By.xpath(".//input[@type='submit']");
+	
+	By resetPassword = By.linkText("Olvidaste tu contraseña?");	
 }

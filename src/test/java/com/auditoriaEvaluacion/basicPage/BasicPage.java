@@ -91,6 +91,11 @@ public class BasicPage {
 		driver.findElement(location).click();
 		
 	}
+	public void click(WebElement element) {
+		
+		element.click();
+	
+	}
 	//verify the render element
 	public boolean isDisplayed(By location) {
 		
@@ -118,6 +123,13 @@ public class BasicPage {
 		}
 		
 	}
+	
+	//getAtribute
+	public String getAttr(String attr, WebElement element) {
+		
+		return element.getAttribute(attr);
+		
+	}
 	//open the url of the page
 	public void visit(String url) {
 		
@@ -130,5 +142,7 @@ public class BasicPage {
 		driver.quit();
 		
 	}
+	
+	
 	
 }
