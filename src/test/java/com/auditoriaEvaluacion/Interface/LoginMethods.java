@@ -8,4 +8,6 @@ public interface LoginMethods {
 	
 	void clickLogin();
 	
+	boolean isOpen();
+	
 }
