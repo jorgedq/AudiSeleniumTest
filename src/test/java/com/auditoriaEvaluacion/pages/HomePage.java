@@ -144,7 +144,7 @@ public class HomePage extends BasicPage implements HomeMethods{
 	
 	By formSubmit = By.xpath(".//input[@type='submit']");
 	
-	By title = By.xpath(".//h1");
+	By title = By.className("body-tittle");
 	//cards elements
 	By emptyCardsMessage = By.className("empty-recicle-message");
 	

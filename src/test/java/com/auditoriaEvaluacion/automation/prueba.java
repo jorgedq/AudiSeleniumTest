@@ -10,10 +10,6 @@ import com.auditoriaEvaluacion.pages.IndexPage;
 
 public class prueba {
 	
-	private WebDriver driver;
-	
-	private IndexPage index; 
-	
 	@BeforeTest
 	public void setUp() {
 		
@@ -42,5 +38,8 @@ public class prueba {
 		
 	}
 	
+	private WebDriver driver;
+	
+	private IndexPage index; 
 	
 }
