@@ -83,13 +83,12 @@ public class HomePage extends BasicPage implements HomeMethods{
 	
 	public boolean existTask(String titleTask, String description) {
 		
-		boolean response = false;
-		
 		List<WebElement> listTitle = findElements(cardTitle);
 		
 		int cardPosition = find(titleTask,listTitle);
 		
 		return cardPosition >=0 ? true : false;
+		
 	}
 	
 	public void editTask(String title) {

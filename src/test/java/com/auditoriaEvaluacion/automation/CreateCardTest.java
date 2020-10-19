@@ -40,13 +40,21 @@ public class CreateCardTest {
 
 		  	  home.clickFormTask();
 		  	  
-			  int i = (int) Math.floor(Math.random() * 4 - 1);
+			  //int i = (int) Math.floor(Math.random() * 3 + 1);
 			  
+		  	  int i = 3;// 0-3
+		  	  
 			  home.createTask(listCard.get(i).getType(), listCard.get(i).getTitle(), listCard.get(i).getDescription());
 			  
 			  home.submitTask();
 			  
-			  finishCreateCards = true;
+			  Thread.sleep(1000);
+			  
+			  if(home.existTask(listCard.get(i).getTitle(), listCard.get(i).getDescription())){
+				  
+				  finishCreateCards = true;
+				  
+			  }
 			  
 		  }
 	  }
