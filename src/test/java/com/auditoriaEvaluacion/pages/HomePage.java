@@ -81,7 +81,7 @@ public class HomePage extends BasicPage implements HomeMethods{
 		
 	}
 	
-	public boolean existTask(String titleTask, String description) {
+	public boolean existTask(String titleTask) {
 		
 		List<WebElement> listTitle = findElements(cardTitle);
 		

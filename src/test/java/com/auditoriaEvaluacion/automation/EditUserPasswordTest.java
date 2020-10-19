@@ -2,23 +2,23 @@ package com.auditoriaEvaluacion.automation;
 
 import org.testng.annotations.Test;
 
+import com.auditoriaEvaluacion.pages.EditUserProfilePage;
 import com.auditoriaEvaluacion.pages.HomePage;
 import com.auditoriaEvaluacion.pages.IndexPage;
 import com.auditoriaEvaluacion.pages.LoginPage;
-import com.auditoriaEvaluacionData.Card;
+import com.auditoriaEvaluacion.pages.UserProfilePage;
 import com.auditoriaEvaluacionData.Data;
 
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterTest;
-import java.util.ArrayList;
 
-public class CreateCardTest {
+public class EditUserPasswordTest {
   @Test
-  public void createCardTest() throws InterruptedException {
+  public void EditUserPasswordTest() {
 	  
-	  boolean finishCreateCards = false;
+	  boolean isEditProfile = false;
 	  
 	  data = Data.getDataInstance();
 	  
@@ -26,7 +26,7 @@ public class CreateCardTest {
 	  
 	  login = new LoginPage(driver);
 	  
-	  if(login.isOpen()) {
+	  if (login.isOpen()) {
 		  
 		  login.fillData(data.getEmailUser(), data.getPasswordUser());
 		  
@@ -36,31 +36,47 @@ public class CreateCardTest {
 		  
 		  if(home.isOpen()) {
 			  
-			  ArrayList<Card> listCard = data.getCardsList();
-
-		  	  home.clickFormTask();
-		  	  
-			  //int i = (int) Math.floor(Math.random() * 3 + 1);
+			  home.clickUser();
 			  
-		  	  int i = 0;// 0-3
-		  	  
-			  home.createTask(listCard.get(i).getType(), listCard.get(i).getTitle(), listCard.get(i).getDescription());
+			  profile = new UserProfilePage(driver);
 			  
-			  home.submitTask();
-			  
-			  Thread.sleep(1000);
-			  
-			  if(home.existTask(listCard.get(i).getTitle())){
+			  if(profile.isOpen()) {
 				  
-				  finishCreateCards = true;
+				  profile.clickEditProfile();
+				  
+				  edit = new EditUserProfilePage(driver);
+				  
+				  if(edit.isOpen()) {
+					  
+					  edit.fillData(data.getNameUser()+" Edit", data.getEmailUser());
+					  
+					  edit.fillPasswordData(data.getPasswordUser()+"6789ab", data.getPasswordUser()+"6789ab");
+					  
+					  edit.submit();
+					  
+					  profile.clickLogout();
+					  
+					  index.clickLogin();
+					  
+					  login.fillData(data.getEmailUser(), data.getPasswordUser()+"6789ab");
+					  
+					  login.submit();
+					  
+					  if(home.isOpen()) {
+						  
+						  isEditProfile = true;
+						  
+					  }
+					  
+				  }
 				  
 			  }
-			  
+		  
 		  }
+		  
 	  }
 	  
-	  AssertJUnit.assertTrue(finishCreateCards);
-	  
+	  AssertJUnit.assertTrue(isEditProfile);
   }
   @BeforeTest
   public void beforeTest() {
@@ -89,4 +105,10 @@ public class CreateCardTest {
   private HomePage home;
   
   private LoginPage login;
+  
+  private UserProfilePage profile;
+  
+  private EditUserProfilePage edit;
+
 }
+

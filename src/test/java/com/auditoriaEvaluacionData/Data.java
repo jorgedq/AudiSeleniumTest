@@ -8,7 +8,7 @@ public class Data {
 		
 		nameUser = "prueba final";
 		
-		emailUser = "final@gmail.com";
+		emailUser = "final2@gmail.com";
 		
 		passwordUser = "final12345";
 		

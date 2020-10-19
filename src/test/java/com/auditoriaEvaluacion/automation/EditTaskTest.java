@@ -2,27 +2,26 @@ package com.auditoriaEvaluacion.automation;
 
 import org.testng.annotations.Test;
 
+import com.auditoriaEvaluacion.pages.EditTaskPage;
 import com.auditoriaEvaluacion.pages.HomePage;
 import com.auditoriaEvaluacion.pages.IndexPage;
 import com.auditoriaEvaluacion.pages.LoginPage;
 import com.auditoriaEvaluacionData.Card;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.AssertJUnit;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-public class DeleteCardTest {
+public class EditTaskTest {
   @Test
-  public void DeleteCardTest() throws InterruptedException {
+  public void EditTaskTest() throws InterruptedException {
 	  
-	  boolean isDeletedTask = false;
+	  boolean isEditTask = false;
 	  
 	  data = Data.getDataInstance();
 	  
@@ -41,28 +40,54 @@ public class DeleteCardTest {
 		  if(home.isOpen()) {
 			  
 			  ArrayList<Card> listCard = data.getCardsList();
-		  	  
-			  //int i = (int) Math.floor(Math.random() * 3 + 1);
 			  
-		  	  int i = 0;// 0-3
-		  	  
-			  home.deleteTask(listCard.get(i).getTitle());
+			  int i = 3;
 			  
-			  home.acceptAlert();
+			  home.editTask(listCard.get(i).getTitle());
 			  
-			  Thread.sleep(1000);
+			  edit = new EditTaskPage(driver);
 			  
-			  if(!home.existTask(listCard.get(i).getTitle())){
+			  if(edit.isOpen()) {
 				  
-				  isDeletedTask = true;
+				  edit.fillData(getOption((int)Math.floor(Math.random() * 3 +1)), listCard.get(i).getTitle() + "Edicion", "Edicion "+listCard.get(i).getDescription());
+				  
+				  edit.submit();
+				  
+				  if(home.existTask(listCard.get(i).getTitle() + "Edicion")) {
+					  
+					  isEditTask = true;
+					  
+				  }
 				  
 			  }
+			  
 		  }
 	  }
 	  
-	  AssertJUnit.assertTrue(isDeletedTask);
+	  AssertJUnit.assertTrue(isEditTask);
   }
-
+  private String getOption(int numero) {
+	  
+	  String response = "";
+	  
+	  switch(numero) {
+		  case 0:
+			  response = "Ninguno";
+			  break;
+		  case 1:
+			  response = "Normal";
+			  break;
+		  case 2:
+			  response = "Importante";
+			  break;
+		  case 3:
+			  response = "Muy Importante";
+			  break;
+	  }
+	  
+	  return response;
+  
+  }
   @BeforeTest
   public void beforeTest() {
 	  
@@ -71,14 +96,13 @@ public class DeleteCardTest {
 	  driver = index.getChromeDriverConnection();
 		
 	  index.visit("http://auditareas.000webhostapp.com/");
-	  
   }
 
   @AfterTest
   public void afterTest() {
 	  
 	  driver.close();
-  
+	  
   }
   
   private static Data data;
@@ -90,5 +114,6 @@ public class DeleteCardTest {
   private HomePage home;
   
   private LoginPage login;
-
+  
+  private EditTaskPage edit;
 }

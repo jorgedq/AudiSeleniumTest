@@ -52,7 +52,7 @@ public class UserProfilePage extends BasicPage implements HomeMethods{
 	
 	public String getName() {
 		
-		return getText(nameUser);
+		return transformText(getText(nameUser), 8);
 	
 	}
 	
@@ -62,6 +62,18 @@ public class UserProfilePage extends BasicPage implements HomeMethods{
 		
 	}
 	
+	private String transformText(String name, int position) {
+		
+		String response = "";
+		
+		for(int i = position; i < name.length(); i++) {
+			
+			response = response + name.charAt(i);
+			
+		}
+		
+		return response;
+	}
 	public void clickEditProfile() {
 		
 		click(editProfile);

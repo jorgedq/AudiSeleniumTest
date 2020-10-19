@@ -2,27 +2,23 @@ package com.auditoriaEvaluacion.automation;
 
 import org.testng.annotations.Test;
 
+import com.auditoriaEvaluacion.pages.EditUserProfilePage;
 import com.auditoriaEvaluacion.pages.HomePage;
 import com.auditoriaEvaluacion.pages.IndexPage;
 import com.auditoriaEvaluacion.pages.LoginPage;
-import com.auditoriaEvaluacionData.Card;
+import com.auditoriaEvaluacion.pages.UserProfilePage;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeClass;
-
-import java.util.ArrayList;
-
+import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.AssertJUnit;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 
-public class DeleteCardTest {
+public class EditUserInformationTest {
   @Test
-  public void DeleteCardTest() throws InterruptedException {
+  public void EdituserInformationTest() throws InterruptedException {
 	  
-	  boolean isDeletedTask = false;
+	  boolean isEditProfile = false;
 	  
 	  data = Data.getDataInstance();
 	  
@@ -30,7 +26,7 @@ public class DeleteCardTest {
 	  
 	  login = new LoginPage(driver);
 	  
-	  if(login.isOpen()) {
+	  if (login.isOpen()) {
 		  
 		  login.fillData(data.getEmailUser(), data.getPasswordUser());
 		  
@@ -40,29 +36,38 @@ public class DeleteCardTest {
 		  
 		  if(home.isOpen()) {
 			  
-			  ArrayList<Card> listCard = data.getCardsList();
-		  	  
-			  //int i = (int) Math.floor(Math.random() * 3 + 1);
+			  home.clickUser();
 			  
-		  	  int i = 0;// 0-3
-		  	  
-			  home.deleteTask(listCard.get(i).getTitle());
+			  profile = new UserProfilePage(driver);
 			  
-			  home.acceptAlert();
-			  
-			  Thread.sleep(1000);
-			  
-			  if(!home.existTask(listCard.get(i).getTitle())){
+			  if(profile.isOpen()) {
 				  
-				  isDeletedTask = true;
+				  profile.clickEditProfile();
+				  
+				  edit = new EditUserProfilePage(driver);
+				  
+				  if(edit.isOpen()) {
+					  
+					  edit.fillData(data.getNameUser()+" Edit", data.getEmailUser());
+					  
+					  edit.submit();
+					  
+					  if(profile.getName().equalsIgnoreCase(data.getNameUser()+" Edit")) {
+						  
+						  isEditProfile = true;
+						  
+					  }
+					  
+				  }
 				  
 			  }
+		  
 		  }
+		  
 	  }
 	  
-	  AssertJUnit.assertTrue(isDeletedTask);
+	  AssertJUnit.assertTrue(isEditProfile);
   }
-
   @BeforeTest
   public void beforeTest() {
 	  
@@ -90,5 +95,9 @@ public class DeleteCardTest {
   private HomePage home;
   
   private LoginPage login;
+  
+  private UserProfilePage profile;
+  
+  private EditUserProfilePage edit;
 
 }
