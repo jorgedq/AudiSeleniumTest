@@ -2,6 +2,7 @@ package com.auditoriaEvaluacion.basicPage;
 
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -123,7 +124,13 @@ public class BasicPage {
 		}
 		
 	}
-	
+	//alert 
+	public void acceptAlert() {
+		
+		Alert alert = driver.switchTo().alert();
+		
+		alert.accept();
+	}
 	//getAtribute
 	public String getAttr(String attr, WebElement element) {
 		
@@ -142,6 +149,7 @@ public class BasicPage {
 		driver.quit();
 		
 	}
+	
 	
 	
 	
