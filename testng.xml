@@ -12,4 +12,9 @@
   		<class name="com.auditoriaEvaluacion.automation.LoginTest"/>
   	</classes>
   </test>
+  <test thread-count="3" name="Create Cards">
+  	<classes>
+  		<class name="com.auditoriaEvaluacion.automation.CreateCardTest"/>
+  	</classes>
+  </test>
 </suite> <!-- Suite -->

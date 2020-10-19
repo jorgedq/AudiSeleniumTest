@@ -53,6 +53,12 @@ public class HomePage extends BasicPage implements HomeMethods{
 		
 	}
 	
+	public void clickFormTask() {
+		
+		click(activeFormCards);
+
+	}
+	
 	public void createTask(String selectText, String title, String description) {
 		
 		selectOption(selectText, selectType);
@@ -146,6 +152,8 @@ public class HomePage extends BasicPage implements HomeMethods{
 	
 	By title = By.className("body-tittle");
 	//cards elements
+	By activeFormCards = By.className("btn-add");
+	
 	By emptyCardsMessage = By.className("empty-recicle-message");
 	
 	By card = By.className("card");
