@@ -50,7 +50,7 @@ public class CreateCardTest {
 			  
 			  Thread.sleep(1000);
 			  
-			  if(home.existTask(listCard.get(i).getTitle(), listCard.get(i).getDescription())){
+			  if(home.existTask(listCard.get(i).getTitle())){
 				  
 				  finishCreateCards = true;
 				  
