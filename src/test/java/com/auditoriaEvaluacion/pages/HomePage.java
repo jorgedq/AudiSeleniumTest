@@ -122,7 +122,7 @@ public class HomePage extends BasicPage implements HomeMethods{
 		for(int element = 0; element < list.size(); element++) {
 			
 			if((list.get(element).getText()).equals(text)) {
-				response = 1;
+				response = element;
 				break;
 			}
 			
@@ -130,6 +130,7 @@ public class HomePage extends BasicPage implements HomeMethods{
 		return response;
 	
 	}
+	
 	//elements of the page
 	By switchButton = By.className("switch__slider");
 	

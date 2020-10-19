@@ -8,17 +8,21 @@ import com.auditoriaEvaluacion.pages.LoginPage;
 import com.auditoriaEvaluacionData.Card;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeTest;
-import org.openqa.selenium.WebDriver;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+
 import java.util.ArrayList;
 
-public class CreateCardTest {
+import org.openqa.selenium.WebDriver;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+
+public class DeleteCardTest {
   @Test
-  public void createCardTest() throws InterruptedException {
+  public void DeleteCardTest() throws InterruptedException {
 	  
-	  boolean finishCreateCards = false;
+	  boolean isDeletedTask = false;
 	  
 	  data = Data.getDataInstance();
 	  
@@ -37,31 +41,28 @@ public class CreateCardTest {
 		  if(home.isOpen()) {
 			  
 			  ArrayList<Card> listCard = data.getCardsList();
-
-		  	  home.clickFormTask();
 		  	  
 			  //int i = (int) Math.floor(Math.random() * 3 + 1);
 			  
 		  	  int i = 0;// 0-3
 		  	  
-			  home.createTask(listCard.get(i).getType(), listCard.get(i).getTitle(), listCard.get(i).getDescription());
+			  home.deleteTask(listCard.get(i).getTitle());
 			  
-			  home.submitTask();
+			  home.acceptAlert();
 			  
 			  Thread.sleep(1000);
 			  
-			  if(home.existTask(listCard.get(i).getTitle(), listCard.get(i).getDescription())){
+			  if(!home.existTask(listCard.get(i).getTitle(), listCard.get(i).getDescription())){
 				  
-				  finishCreateCards = true;
+				  isDeletedTask = true;
 				  
 			  }
-			  
 		  }
 	  }
 	  
-	  AssertJUnit.assertTrue(finishCreateCards);
-	  
+	  AssertJUnit.assertTrue(isDeletedTask);
   }
+
   @BeforeTest
   public void beforeTest() {
 	  
@@ -89,4 +90,5 @@ public class CreateCardTest {
   private HomePage home;
   
   private LoginPage login;
+
 }
