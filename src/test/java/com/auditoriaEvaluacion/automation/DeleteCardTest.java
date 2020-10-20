@@ -46,13 +46,13 @@ public class DeleteCardTest {
 			  
 		  	  int i = 0;// 0-3
 		  	  
-			  home.deleteTask(listCard.get(i).getTitle());
+			  home.deleteTask(listCard.get(i).getTitle() + "Edicion");
 			  
 			  home.acceptAlert();
 			  
 			  Thread.sleep(1000);
 			  
-			  if(!home.existTask(listCard.get(i).getTitle())){
+			  if(!home.existTask(listCard.get(i).getTitle() + "Edicion")){
 				  
 				  isDeletedTask = true;
 				  

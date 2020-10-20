@@ -6,9 +6,9 @@ public class Data {
 	
 	private Data() {
 		
-		nameUser = "jorge delgadillo 3";
+		nameUser = "jorge delgadillo 35";
 		
-		emailUser = "jorge3@gmail.com";
+		emailUser = "jorge35@gmail.com";
 		
 		passwordUser = "jorge123456";
 		

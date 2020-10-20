@@ -42,7 +42,7 @@ public class EditTaskTest {
 			  
 			  ArrayList<Card> listCard = data.getCardsList();
 			  
-			  int i = 3;
+			  int i = 0;
 			  
 			  home.editTask(listCard.get(i).getTitle());
 			  
