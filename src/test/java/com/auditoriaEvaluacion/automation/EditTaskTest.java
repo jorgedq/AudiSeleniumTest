@@ -1,6 +1,10 @@
 package com.auditoriaEvaluacion.automation;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
+
 
 import com.auditoriaEvaluacion.pages.EditTaskPage;
 import com.auditoriaEvaluacion.pages.HomePage;
@@ -9,17 +13,14 @@ import com.auditoriaEvaluacion.pages.LoginPage;
 import com.auditoriaEvaluacionData.Card;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeTest;
-
 import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterTest;
+
 
 public class EditTaskTest {
   @Test
-  public void EditTaskTest() throws InterruptedException {
+  public void editTaskTest() throws InterruptedException {
 	  
 	  boolean isEditTask = false;
 	  
@@ -88,8 +89,8 @@ public class EditTaskTest {
 	  return response;
   
   }
-  @BeforeTest
-  public void beforeTest() {
+  @BeforeClass
+  public void beforeClass() {
 	  
 	  index = new IndexPage(driver);
 	  
@@ -98,8 +99,8 @@ public class EditTaskTest {
 	  index.visit("http://auditareas.000webhostapp.com/");
   }
 
-  @AfterTest
-  public void afterTest() {
+  @AfterClass
+  public void afterClass() {
 	  
 	  driver.close();
 	  
