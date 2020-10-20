@@ -6,11 +6,11 @@ public class Data {
 	
 	private Data() {
 		
-		nameUser = "jorge delgadillo 35";
+		nameUser = "prueba x final";
 		
-		emailUser = "jorge35@gmail.com";
+		emailUser = "pruebaxfinal@gmail.com";
 		
-		passwordUser = "jorge123456";
+		passwordUser = "finalx123456";
 		
 		cardsList = new ArrayList();
 		

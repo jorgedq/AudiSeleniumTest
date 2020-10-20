@@ -13,7 +13,7 @@ import com.auditoriaEvaluacionData.Data;
 import org.openqa.selenium.WebDriver;
 
 public class LoginTest {
-  @Test
+  @Test(groups = { "two" }, dependsOnGroups = { "one" } )
   public void loginTestUser() throws InterruptedException {
 	  
 	  boolean loginResponse = false;

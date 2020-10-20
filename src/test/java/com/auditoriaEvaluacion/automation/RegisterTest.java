@@ -23,7 +23,7 @@ public class RegisterTest {
 	  index.visit("http://auditareas.000webhostapp.com/");
 	  
   }
-  @Test(priority=1)
+  @Test(groups = { "one" })
   public void RegisterUser() throws InterruptedException {
 	  
 	  boolean createUserResponse = false;

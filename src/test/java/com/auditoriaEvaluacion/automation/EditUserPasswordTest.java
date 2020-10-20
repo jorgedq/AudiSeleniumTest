@@ -16,7 +16,7 @@ import com.auditoriaEvaluacionData.Data;
 import org.openqa.selenium.WebDriver;
 
 public class EditUserPasswordTest {
-  @Test
+  @Test(dependsOnGroups = { "six" } )
   public void editUserPasswordTest() {
 	  
 	  boolean isEditProfile = false;

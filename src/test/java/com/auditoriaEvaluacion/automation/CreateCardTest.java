@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 
 public class CreateCardTest {
-  @Test
+  @Test(groups = { "three" }, dependsOnGroups = { "two" } )
   public void createCardTest() throws InterruptedException {
 	  
 	  boolean finishCreateCards = false;

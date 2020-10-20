@@ -15,7 +15,7 @@ import com.auditoriaEvaluacionData.Data;
 import org.openqa.selenium.WebDriver;
 
 public class EditUserInformationTest {
-  @Test
+  @Test(groups = { "six" }, dependsOnGroups = { "five" } )
   public void edituserInformationTest() throws InterruptedException {
 	  
 	  boolean isEditProfile = false;

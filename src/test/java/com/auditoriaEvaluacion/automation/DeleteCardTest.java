@@ -19,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class DeleteCardTest {
-  @Test
+  @Test(groups = { "five" }, dependsOnGroups = { "four" } )
   public void deleteCardTest() throws InterruptedException {
 	  
 	  boolean isDeletedTask = false;

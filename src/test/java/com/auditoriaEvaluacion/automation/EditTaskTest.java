@@ -19,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class EditTaskTest {
-  @Test
+  @Test(groups = { "four" }, dependsOnGroups = { "three" } )
   public void editTaskTest() throws InterruptedException {
 	  
 	  boolean isEditTask = false;
