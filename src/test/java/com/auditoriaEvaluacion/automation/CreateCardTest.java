@@ -1,6 +1,10 @@
 package com.auditoriaEvaluacion.automation;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
+
 
 import com.auditoriaEvaluacion.pages.HomePage;
 import com.auditoriaEvaluacion.pages.IndexPage;
@@ -8,14 +12,13 @@ import com.auditoriaEvaluacion.pages.LoginPage;
 import com.auditoriaEvaluacionData.Card;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterTest;
+
+
 import java.util.ArrayList;
 
 public class CreateCardTest {
-  @Test
+  @Test(groups = { "three" }, dependsOnGroups = { "two" } )
   public void createCardTest() throws InterruptedException {
 	  
 	  boolean finishCreateCards = false;
@@ -62,8 +65,8 @@ public class CreateCardTest {
 	  AssertJUnit.assertTrue(finishCreateCards);
 	  
   }
-  @BeforeTest
-  public void beforeTest() {
+  @BeforeClass
+  public void beforeClass() {
 	  
 	  index = new IndexPage(driver);
 	  
@@ -73,8 +76,8 @@ public class CreateCardTest {
 	  
   }
 
-  @AfterTest
-  public void afterTest() {
+  @AfterClass
+  public void afterClass() {
 	  
 	  driver.close();
   

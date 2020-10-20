@@ -1,6 +1,10 @@
 package com.auditoriaEvaluacion.automation;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
+
 
 import com.auditoriaEvaluacion.pages.EditUserProfilePage;
 import com.auditoriaEvaluacion.pages.HomePage;
@@ -9,14 +13,11 @@ import com.auditoriaEvaluacion.pages.LoginPage;
 import com.auditoriaEvaluacion.pages.UserProfilePage;
 import com.auditoriaEvaluacionData.Data;
 
-import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
-import org.testng.AssertJUnit;
-import org.testng.annotations.AfterTest;
 
 public class EditUserPasswordTest {
-  @Test
-  public void EditUserPasswordTest() {
+  @Test(dependsOnGroups = { "six" } )
+  public void editUserPasswordTest() {
 	  
 	  boolean isEditProfile = false;
 	  
@@ -78,8 +79,8 @@ public class EditUserPasswordTest {
 	  
 	  AssertJUnit.assertTrue(isEditProfile);
   }
-  @BeforeTest
-  public void beforeTest() {
+  @BeforeClass
+  public void beforeClass() {
 	  
 	  index = new IndexPage(driver);
 	  
@@ -89,8 +90,8 @@ public class EditUserPasswordTest {
 	  
   }
 
-  @AfterTest
-  public void afterTest() {
+  @AfterClass
+  public void afterClass() {
 	  
 	  driver.close();
   

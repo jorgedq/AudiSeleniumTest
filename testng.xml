@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="1" name="RegisterTest">
+  <test name="Register Test">
     <classes>
       <class name="com.auditoriaEvaluacion.automation.RegisterTest"/>
-      
     </classes>
-  </test> <!-- Test -->
-  <test thread-count="2" name="LoginTest">
-  	<classes>
-  		<class name="com.auditoriaEvaluacion.automation.LoginTest"/>
-  	</classes>
   </test>
-  <test thread-count="3" name="Create Cards">
-  	<classes>
-  		<class name="com.auditoriaEvaluacion.automation.CreateCardTest"/>
-  	</classes>
+  <test name="Login Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.LoginTestUser"/>
+    </classes>
   </test>
-</suite> <!-- Suite -->
+  <test name="Add Task Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.CreateCardTest"/>
+    </classes>
+  </test>
+  <test name="Edit Task Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.EditTaskTest"/>
+    </classes>
+  </test>
+  <test name="Delete Task Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.DeleteCardTest"/>
+    </classes>
+  </test>
+  <test name="Edit Profile Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.EditUserInformationTest"/>
+    </classes>
+  </test>
+  <test name="Edit Profile Password Test">
+    <classes>
+      <class name="com.auditoriaEvaluacion.automation.EditUserPasswordTest"/>
+    </classes>
+  </test>
+</suite>
